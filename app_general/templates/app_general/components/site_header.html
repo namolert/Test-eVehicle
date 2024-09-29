@@ -1,0 +1,10 @@
+{% load static %}
+
+<header style="background-color: lightcoral;">
+    <a href="{% url 'home' %}">
+        <img src="{% static 'app_general/logo.png' %}">
+        <span>My eVehicle</span>
+    </a>
+    <a href="{% url 'vehicles' %}">Menu</a>
+    <a href="{% url 'about' %}">About</a>
+</header>

@@ -1,0 +1,30 @@
+{% extends "app_general/components/base.html" %}
+{% load static %}
+
+{% block site_title%} {{ vehicle.title }} | {% endblock %}
+
+{% block content %}
+{% if vehicle is not None %}
+<div>
+    <div>
+        <img src="{% static vehicle.image_relative_url %}">
+    </div>
+    <h3>
+        <h3>{{ vehicle.title }}</h3>
+        {% if vehicle.is_available %}
+            <p>{{ vehicle.price|floatformat:'g' }} GBP</p>
+        {% else %}
+            <del>{{ vehicle.price|floatformat:'g' }} GBP</del>
+        {% endif %}
+        <p>
+            Return at {{ vehicle.rent_end_at|date:'j N Y' }}
+        </p>
+        <p>
+            Description {{ vehicle.description }}
+        </p>
+    </h3>
+</div>
+{% else %}
+    <p>Vehicle not found</p>
+{% endif %}
+{% endblock %}
